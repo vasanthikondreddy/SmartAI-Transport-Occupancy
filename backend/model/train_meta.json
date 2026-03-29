@@ -1,0 +1,116 @@
+{
+  "features": [
+    "Day of Week",
+    "Month",
+    "Season",
+    "Departure Hour",
+    "Source Station",
+    "Destination Station",
+    "Train Type",
+    "Seat Capacity",
+    "Is Weekend",
+    "Is Holiday",
+    "Is Peak Hour",
+    "Route Distance KM",
+    "Travel Class",
+    "Railway Zone"
+  ],
+  "cat_cols": [
+    "Day of Week",
+    "Month",
+    "Season",
+    "Source Station",
+    "Destination Station",
+    "Train Type",
+    "Travel Class",
+    "Railway Zone"
+  ],
+  "classifier_accuracy": 0.695,
+  "regressor_mae": 6.16,
+  "encoder_classes": {
+    "Day of Week": [
+      "Friday",
+      "Monday",
+      "Saturday",
+      "Sunday",
+      "Thursday",
+      "Tuesday",
+      "Wednesday"
+    ],
+    "Month": [
+      "April",
+      "August",
+      "December",
+      "February",
+      "January",
+      "July",
+      "June",
+      "March",
+      "May",
+      "November",
+      "October",
+      "September"
+    ],
+    "Season": [
+      "Autumn",
+      "Monsoon",
+      "Summer",
+      "Winter"
+    ],
+    "Source Station": [
+      "Anantapur",
+      "Eluru",
+      "Guntur",
+      "Kakinada",
+      "Kurnool",
+      "Machilipatnam",
+      "Nellore",
+      "Ongole",
+      "Rajahmundry",
+      "Srikakulam Road",
+      "Tirupati",
+      "Vijayawada",
+      "Visakhapatnam"
+    ],
+    "Destination Station": [
+      "Bengaluru City",
+      "Chennai Central",
+      "Delhi Hazrat Nizamuddin",
+      "Howrah",
+      "Hyderabad Deccan",
+      "Kolkata",
+      "Mumbai CSMT",
+      "Vijayawada",
+      "Visakhapatnam"
+    ],
+    "Train Type": [
+      "Duronto",
+      "Express",
+      "Jan Shatabdi",
+      "Passenger",
+      "Rajdhani",
+      "Shatabdi",
+      "Superfast"
+    ],
+    "Travel Class": [
+      "1st AC (1A)",
+      "2nd AC (2A)",
+      "3rd AC (3A)",
+      "CC (Chair Car)",
+      "General (GN)",
+      "Sleeper (SL)"
+    ],
+    "Railway Zone": [
+      "CR",
+      "ECoR",
+      "SCR",
+      "SWR"
+    ],
+    "target_classes": [
+      "High",
+      "Low",
+      "Moderate",
+      "Very High"
+    ]
+  }
+}

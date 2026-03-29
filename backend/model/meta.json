@@ -1,0 +1,96 @@
+{
+  "features": [
+    "Day of Week",
+    "Month",
+    "Season",
+    "Hour of Departure",
+    "Source City",
+    "Destination City",
+    "Bus Type",
+    "Bus Capacity",
+    "Is Weekend",
+    "Is Holiday",
+    "Is Peak Hour",
+    "Route Distance KM"
+  ],
+  "cat_cols": [
+    "Day of Week",
+    "Month",
+    "Season",
+    "Source City",
+    "Destination City",
+    "Bus Type"
+  ],
+  "classifier_accuracy": 0.603,
+  "regressor_mae": 7.95,
+  "encoder_classes": {
+    "Day of Week": [
+      "Friday",
+      "Monday",
+      "Saturday",
+      "Sunday",
+      "Thursday",
+      "Tuesday",
+      "Wednesday"
+    ],
+    "Month": [
+      "April",
+      "August",
+      "December",
+      "February",
+      "January",
+      "July",
+      "June",
+      "March",
+      "May",
+      "November",
+      "October",
+      "September"
+    ],
+    "Season": [
+      "Autumn",
+      "Monsoon",
+      "Summer",
+      "Winter"
+    ],
+    "Source City": [
+      "Anantapur",
+      "Bhimavaram",
+      "Eluru",
+      "Guntur",
+      "Kakinada",
+      "Kurnool",
+      "Machilipatnam",
+      "Nellore",
+      "Ongole",
+      "Proddatur",
+      "Rajahmundry",
+      "Srikakulam",
+      "Tirupati",
+      "Vijayawada",
+      "Visakhapatnam"
+    ],
+    "Destination City": [
+      "Bengaluru",
+      "Chennai",
+      "Hyderabad",
+      "Kurnool",
+      "Tirupati",
+      "Vijayawada",
+      "Visakhapatnam"
+    ],
+    "Bus Type": [
+      "Express",
+      "Ordinary",
+      "Sleeper",
+      "Super Luxury",
+      "Volvo AC"
+    ],
+    "target_classes": [
+      "High",
+      "Low",
+      "Moderate",
+      "Very High"
+    ]
+  }
+}
