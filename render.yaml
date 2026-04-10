@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: smart-ai-backend
+    env: docker
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    autoDeploy: true
