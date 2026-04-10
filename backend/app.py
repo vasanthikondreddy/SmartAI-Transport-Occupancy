@@ -72,6 +72,7 @@ class BusPredictRequest(BaseModel):
     destination_city: str
     bus_type: str
     bus_capacity: int
+    ticket_price: float = 100.0      # NEW: used by XGBoost model
     is_holiday: int = 0
 
 @app.post("/predict/bus")
@@ -92,6 +93,7 @@ def predict_bus(req: BusPredictRequest):
         "Is Holiday":        req.is_holiday,
         "Is Peak Hour":      peak,
         "Route Distance KM": 300,
+        "Ticket Price INR":  req.ticket_price,
     }
 
     X = np.array([[row[f] for f in bus_meta["features"]]])
@@ -107,6 +109,8 @@ def predict_bus(req: BusPredictRequest):
         "estimated_passengers": round((pct / 100) * req.bus_capacity),
         "probabilities":        {c: round(float(p), 3) for c, p in zip(classes, proba)},
         "model_accuracy":       bus_meta["classifier_accuracy"],
+        "model_r2":             bus_meta.get("regressor_r2"),
+        "model_mae":            bus_meta.get("regressor_mae"),
     }
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -126,6 +130,7 @@ class TrainPredictRequest(BaseModel):
     seat_capacity: int
     route_distance_km: int
     journey_duration_hrs: float = 5.0
+    ticket_price: float = 200.0      # NEW: used by XGBoost model
     is_weekend: int = 0
     is_holiday: int = 0
     is_festival_season: int = 0
@@ -136,22 +141,23 @@ def predict_train(req: TrainPredictRequest):
     peak = req.is_peak_hour if req.is_peak_hour else auto_peak(req.departure_hour)
 
     row = {
-        "Day of Week":         safe_encode(train_encoders, "Day of Week",         req.day_of_week),
-        "Month":               safe_encode(train_encoders, "Month",               req.month),
-        "Season":              safe_encode(train_encoders, "Season",              req.season),
-        "Train Type":          safe_encode(train_encoders, "Train Type",          req.train_type),
-        "Railway Zone":        safe_encode(train_encoders, "Railway Zone",        req.railway_zone),
-        "Source Station":      safe_encode(train_encoders, "Source Station",      req.source_station),
-        "Destination Station": safe_encode(train_encoders, "Destination Station", req.destination_station),
-        "Travel Class":        safe_encode(train_encoders, "Travel Class",        req.travel_class),
-        "Is Weekend":          req.is_weekend,
-        "Is Holiday":          req.is_holiday,
-        "Is Festival Season":  req.is_festival_season,
-        "Route Distance KM":   req.route_distance_km,
-        "Departure Hour":      req.departure_hour,
-        "Is Peak Hour":        peak,
-        "Journey Duration Hrs":req.journey_duration_hrs,
-        "Seat Capacity":       req.seat_capacity,
+        "Day of Week":          safe_encode(train_encoders, "Day of Week",         req.day_of_week),
+        "Month":                safe_encode(train_encoders, "Month",               req.month),
+        "Season":               safe_encode(train_encoders, "Season",              req.season),
+        "Train Type":           safe_encode(train_encoders, "Train Type",          req.train_type),
+        "Railway Zone":         safe_encode(train_encoders, "Railway Zone",        req.railway_zone),
+        "Source Station":       safe_encode(train_encoders, "Source Station",      req.source_station),
+        "Destination Station":  safe_encode(train_encoders, "Destination Station", req.destination_station),
+        "Travel Class":         safe_encode(train_encoders, "Travel Class",        req.travel_class),
+        "Is Weekend":           req.is_weekend,
+        "Is Holiday":           req.is_holiday,
+        "Is Festival Season":   req.is_festival_season,
+        "Route Distance KM":    req.route_distance_km,
+        "Departure Hour":       req.departure_hour,
+        "Is Peak Hour":         peak,
+        "Journey Duration Hrs": req.journey_duration_hrs,
+        "Seat Capacity":        req.seat_capacity,
+        "Ticket Price INR":     req.ticket_price,
     }
 
     X = np.array([[row[f] for f in train_meta["features"]]])
@@ -167,6 +173,7 @@ def predict_train(req: TrainPredictRequest):
         "estimated_passengers": round((pct / 100) * req.seat_capacity),
         "probabilities":        {c: round(float(p), 3) for c, p in zip(classes, proba)},
         "model_accuracy":       train_meta["classifier_accuracy"],
+        "model_r2":             train_meta.get("regressor_r2"),
         "model_mae_pct":        train_meta["regressor_mae"],
     }
 
@@ -183,11 +190,14 @@ def train_meta_values():
 @app.get("/")
 def root():
     return {
-        "message": "AI-Commute Prediction API is running!",
+        "message":      "AI-Commute Prediction API is running!",
+        "model":        "XGBoost",
         "endpoints": {
             "bus":   "POST /predict/bus",
             "train": "POST /predict/train",
         },
-        "bus_accuracy":   bus_meta["classifier_accuracy"],
-        "train_accuracy": train_meta["classifier_accuracy"],
+        "bus_classifier_accuracy":   bus_meta["classifier_accuracy"],
+        "bus_regressor_r2":          bus_meta.get("regressor_r2"),
+        "train_classifier_accuracy": train_meta["classifier_accuracy"],
+        "train_regressor_r2":        train_meta.get("regressor_r2"),
     }

@@ -11,7 +11,8 @@
     "Is Weekend",
     "Is Holiday",
     "Is Peak Hour",
-    "Route Distance KM"
+    "Route Distance KM",
+    "Ticket Price INR"
   ],
   "cat_cols": [
     "Day of Week",
@@ -21,8 +22,10 @@
     "Destination City",
     "Bus Type"
   ],
-  "classifier_accuracy": 0.603,
-  "regressor_mae": 7.95,
+  "classifier_accuracy": 0.594,
+  "regressor_mae": 8.64,
+  "regressor_r2": 0.7477,
+  "model": "XGBoost",
   "encoder_classes": {
     "Day of Week": [
       "Friday",
@@ -91,6 +94,70 @@
       "Low",
       "Moderate",
       "Very High"
+    ]
+  },
+  "cat_values": {
+    "bus_types": [
+      "Express",
+      "Ordinary",
+      "Sleeper",
+      "Super Luxury",
+      "Volvo AC"
+    ],
+    "source_cities": [
+      "Anantapur",
+      "Bhimavaram",
+      "Eluru",
+      "Guntur",
+      "Kakinada",
+      "Kurnool",
+      "Machilipatnam",
+      "Nellore",
+      "Ongole",
+      "Proddatur",
+      "Rajahmundry",
+      "Srikakulam",
+      "Tirupati",
+      "Vijayawada",
+      "Visakhapatnam"
+    ],
+    "dest_cities": [
+      "Bengaluru",
+      "Chennai",
+      "Hyderabad",
+      "Kurnool",
+      "Tirupati",
+      "Vijayawada",
+      "Visakhapatnam"
+    ],
+    "days": [
+      "Friday",
+      "Monday",
+      "Saturday",
+      "Sunday",
+      "Thursday",
+      "Tuesday",
+      "Wednesday"
+    ],
+    "months": [
+      "April",
+      "August",
+      "December",
+      "February",
+      "January",
+      "July",
+      "June",
+      "March",
+      "May",
+      "November",
+      "October",
+      "September"
+    ],
+    "seasons": [
+      "Autumn",
+      "Monsoon",
+      "Summer",
+      "Winter"
     ]
   }
 }
