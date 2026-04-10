@@ -66,6 +66,6 @@ cd SmartAI-Transport-Occupancy
 backend run :uvicorn app:app --reload --port 8000 
 frontend run:npm run dev
 
-**Run project :https://vercel.com/vasanthis-projects-b1cdb037/smart-ai-transport-occupancy**
+**Run project :https://smart-ai-transport-occupancy.vercel.app/**
 **
 backend url:https://smartai-transport-occupancy-5.onrender.com
