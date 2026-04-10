@@ -47,4 +47,14 @@ This system integrates **Machine Learning + Web Development** to provide real-ti
 ---
 
 ## 📁 Project Structure
+ai-commute/
+│── backend/ # Express server & APIs
+│── frontend/ # React frontend (Vite + TS)
+│── .gitignore
+│── README.md
 
+## ⚙️ Installation & Setup
+
+### 🔹 1. Clone the Repository
+git clone https://github.com/vasanthikondreddy/SmartAI-Transport-Occupancy.git
+cd SmartAI-Transport-Occupancy
