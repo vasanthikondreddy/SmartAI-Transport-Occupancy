@@ -58,3 +58,5 @@ ai-commute/
 ### 🔹 1. Clone the Repository
 git clone https://github.com/vasanthikondreddy/SmartAI-Transport-Occupancy.git
 cd SmartAI-Transport-Occupancy
+backend run :uvicorn app:app --reload --port 8000 
+frontend run:npm run dev
