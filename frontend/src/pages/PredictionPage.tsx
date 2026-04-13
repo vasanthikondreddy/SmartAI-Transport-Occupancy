@@ -132,7 +132,10 @@ const PortalDropdown = ({ anchorRef, open, options, value, onChange, onClose, ac
           <div style={{ maxHeight:"200px", overflowY:"auto" }} className="py-1">
             {options.map(opt => (
               <button key={opt} type="button"
+                onMouseDown={e => { e.preventDefault(); onChange(opt); onClose(); }}
+
                 style={{ display:"block", width:"100%", textAlign:"left", padding:"10px 16px", fontSize:"13px",
+                  
                   cursor:"pointer", color:value===opt ? accentColor : "hsl(var(--foreground))",
                   fontWeight:value===opt?600:400, background:"transparent", border:"none", transition:"background 0.12s" }}
                 onMouseEnter={e => (e.currentTarget.style.background="rgba(245,158,11,0.08)")}
