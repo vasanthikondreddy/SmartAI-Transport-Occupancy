@@ -132,7 +132,6 @@ const PortalDropdown = ({ anchorRef, open, options, value, onChange, onClose, ac
           <div style={{ maxHeight:"200px", overflowY:"auto" }} className="py-1">
             {options.map(opt => (
               <button key={opt} type="button"
-                onMouseDown={e => { e.preventDefault(); onChange(opt); onClose(); }}
                 style={{ display:"block", width:"100%", textAlign:"left", padding:"10px 16px", fontSize:"13px",
                   cursor:"pointer", color:value===opt ? accentColor : "hsl(var(--foreground))",
                   fontWeight:value===opt?600:400, background:"transparent", border:"none", transition:"background 0.12s" }}
@@ -690,7 +689,7 @@ const PredictionPage = () => {
                   <div style={{ display:"flex", justifyContent:"flex-end" }}>
                     <span style={{ fontSize:11, padding:"4px 10px", borderRadius:20, background:"rgba(245,158,11,0.1)",
                       color:"#B45309", fontWeight:600, border:"1px solid rgba(245,158,11,0.3)" }}>
-                      Model accuracy: {(result.modelAccuracy*100).toFixed(1)}%
+                      {/* Model accuracy: {(result.modelAccuracy*100).toFixed(1)}% */}
                     </span>
                   </div>
                 )}

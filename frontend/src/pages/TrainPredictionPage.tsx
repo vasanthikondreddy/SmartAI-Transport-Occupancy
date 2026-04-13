@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 // const API_BASE = "http://localhost:8000" || " import.meta.env.VITE_API_BASE_URL";
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE =" https://smartai-transport-occupancy-5.onrender.com";
 
 const days   = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -719,7 +719,7 @@ const TrainPredictionPage = () => {
                   <div style={{ display:"flex", justifyContent:"flex-end" }}>
                     <span style={{ fontSize:11, padding:"4px 10px", borderRadius:20, background:"rgba(13,148,136,0.1)",
                       color:TEAL_DARK, fontWeight:600, border:`1px solid rgba(13,148,136,0.3)` }}>
-                      Model accuracy: {(result.modelAccuracy*100).toFixed(1)}%
+                      {/* Model accuracy: {(result.modelAccuracy*100).toFixed(1)}% */}
                     </span>
                   </div>
                 )}

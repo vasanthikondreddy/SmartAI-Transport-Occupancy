@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 // const API_BASE = "http://localhost:8000"|| " import.meta.env.VITE_API_BASE_URL";
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = "https://smartai-transport-occupancy-5.onrender.com";
 const days   = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const monthToSeason = {
